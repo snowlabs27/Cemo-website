@@ -175,7 +175,7 @@ table {
 
   .site-header img,
   #headerCarousel img {
-    height: clamp(260px, 72vw, 360px) !important;
+    height: clamp(260px, 72vw, 400px) !important;
   }
 
   .site-header > .position-absolute,
