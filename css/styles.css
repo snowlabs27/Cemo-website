@@ -25,18 +25,33 @@
   padding-bottom: 0 !important;
 }
 
+.navbar.fixed-top {
+  transition: background-color 0.3s ease;
+}
+
+.navbar.fixed-top.bg-dark {
+  background-color: rgba(33, 37, 41, 0.5) !important;
+}
+
+.navbar.fixed-top.bg-dark:hover {
+  background-color: rgba(33, 37, 41, 1) !important;
+}
+
 .navbar-brand {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
 
 .site-header {
+  margin-top: 0 !important;
+}
+
+main.mt-5 {
   margin-top: 70px !important;
 }
 
-main.mt-5,
 header.mt-5 {
-  margin-top: 70px !important;
+  margin-top: 0 !important;
 }
 
 .history-main {
