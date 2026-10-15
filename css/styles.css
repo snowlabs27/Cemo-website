@@ -14,6 +14,17 @@
   box-shadow: 0 0.5rem 1.25rem rgba(33, 37, 41, 0.14);
 }
 
+.distributor-logo-link {
+  display: inline-block;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.distributor-logo-link:hover,
+.distributor-logo-link:focus-visible {
+  transform: translateY(-4px) scale(1.02);
+  filter: drop-shadow(0 0.35rem 0.5rem rgba(33, 37, 41, 0.2));
+}
+
 .navbar-brand img {
   width: 96px !important;
   height: auto !important;
@@ -390,7 +401,7 @@ body {
 
 hr {
   margin: 1rem 0;
-  color: inherit;
+  color: #0074D9;
   border: 0;
   border-top: 1px solid;
   opacity: 0.25;
@@ -11126,4 +11137,15 @@ textarea.form-control-lg {
   height: 4rem;
   width: 4rem;
   font-size: 2rem;
+}
+
+.border-color {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #0074D9;
+}
+
+.b-sh {
+	color: #0074D9;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
