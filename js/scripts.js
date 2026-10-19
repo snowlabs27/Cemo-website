@@ -12,10 +12,34 @@ document.addEventListener("DOMContentLoaded", function () {
 		return;
 	}
 
+	const pageLoadedAt = Date.now();
+
 	contactForm.addEventListener("submit", async function (event) {
 		event.preventDefault();
 
+		const COOLDOWN_MS = 60000;
+		const MIN_FILL_MS = 3000;
 		const submitButton = document.getElementById("submitButton");
+		const errorBox = document.getElementById("submitErrorMessage");
+		const showError = function (text) {
+			errorBox.querySelector(".text-danger").textContent = text;
+			errorBox.classList.remove("d-none");
+		};
+
+		// Honeypot filled: silently drop the submission
+		if (contactForm.elements.botcheck.checked) {
+			return;
+		}
+		if (Date.now() - pageLoadedAt < MIN_FILL_MS) {
+			showError("Please take a moment to complete the form.");
+			return;
+		}
+		const lastSent = Number(localStorage.getItem("contactLastSent") || 0);
+		if (Date.now() - lastSent < COOLDOWN_MS) {
+			showError("Please wait a minute before sending another enquiry.");
+			return;
+		}
+
 		const successMessage = document.getElementById("submitSuccessMessage");
 		const errorMessage = document.getElementById("submitErrorMessage");
 		submitButton.disabled = true;
@@ -38,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 
 			contactForm.reset();
+			localStorage.setItem("contactLastSent", String(Date.now()));
 			successMessage.classList.remove("d-none");
 		} catch (error) {
 			errorMessage.querySelector(".text-danger").textContent = "Error sending enquiry. Please try again or contact us directly.";
